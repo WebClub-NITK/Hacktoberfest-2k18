@@ -248,7 +248,6 @@ $(document).ready(function(){
         
         // If the count down is over, write some text 
         if (distance < 0) {
-            clearInterval(x);
             countDownDate = new Date("Nov 1, 2018 00:00:00").getTime();
             var now = new Date().getTime();
         
