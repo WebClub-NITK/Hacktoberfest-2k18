@@ -244,8 +244,9 @@ $(document).ready(function(){
         
         // Output the result in an element with id="demo"
         if(distance>=0){
-          document.getElementById("timer").innerHTML = days + "<span>days</span>: " + hours + "<span>hrs</span>: "
-          + minutes + "<span>m</span>: " + seconds + "<span>s</span>";
+          document.getElementById("timer").innerHTML = ("0" + days).slice(-2)  + "<span>days</span>: " + ("0" + hours).slice(-2) + "<span>hrs</span>: "
+            + ("0" + minutes).slice(-2)  + "<span>m</span>: " + ("0" + seconds).slice(-2)  + "<span>s</span>";
+
         }
         // If the count down is over, write some text 
         if (distance < 0) {
@@ -262,8 +263,9 @@ $(document).ready(function(){
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
             
             // Output the result in an element with id="demo"
-            document.getElementById("timer").innerHTML = days + "<span>days</span>: " + hrs + "<span>hrs</span>: "
-            + minutes + "<span>m</span>: " + seconds + "<span>s</span>";
+            document.getElementById("timer").innerHTML = ("0" + days).slice(-2)  + "<span>days</span>: " + ("0" + hours).slice(-2) + "<span>hrs</span>: "
+            + ("0" + minutes).slice(-2)  + "<span>m</span>: " + ("0" + seconds).slice(-2)  + "<span>s</span>";
+
       
             if(distance<0){
               clearInterval(x);
