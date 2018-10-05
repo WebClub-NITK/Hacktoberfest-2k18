@@ -16,4 +16,7 @@ List of resources that might be required / helpful.
 ### Directory Structure
 Make sure a directory is created under the corresponding domain folder properly following the collaborator guidelines and mention it here.
 
+#### Note
+Please claim the issue first by commenting here before starting to work on it.
+
 <!-- Delete all the unnecessary / inapplicable text from the template -->
