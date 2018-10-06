@@ -1,0 +1,4 @@
+    Name: Jatin Mehta
+    Github username: JatinGeek
+    Branch:MACS
+    Degree and Year: 1st, MCA
