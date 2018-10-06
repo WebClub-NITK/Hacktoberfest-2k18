@@ -16,7 +16,7 @@ def binary_search(array, number):
         else:
             return mid
     else:
-        False
+        return False
 
 def main():
     test_array = [1, 2, 3, 4, 5, 6, 7, 8, 9]
