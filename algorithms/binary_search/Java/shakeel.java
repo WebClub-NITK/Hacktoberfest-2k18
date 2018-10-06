@@ -10,7 +10,7 @@ class BinarySearch {
         int f = nums.length - 1;
         while(i <= f) {
             
-            int mid = i + (f - 1) / 2; //find the middle
+            int mid = i + (f - i) / 2; //find the middle
 
             //check the middle
             if(nums[mid] == x) return mid;
