@@ -1,0 +1,82 @@
+/**
+ * HTML resets
+ */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #222;
+}
+
+
+/**
+ * Horizontal loader
+ */
+.horizontal-loader__container {
+  opacity: 0;
+  transition: opacity 350ms;
+  width: 100%;
+}
+
+.horizontal-loader__container-intermediate {
+  background-color: #ccc;
+  height: 2px;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  width: 100%;
+}
+
+.horizontal-loader__container-loaded {
+  background-color: #f00;
+  box-shadow: 0 0 16px 2px #f00;
+  height: 2px;
+  position: absolute;
+  width: 0%;
+}
+
+
+/**
+ * Intermediate loading blocks
+ */
+ @keyframes intermediate-block {
+   0% {
+     right: -2px;
+   }
+   100% {
+     right: 100%;
+   }
+}
+
+.horizontal-loaded__intermediate-block {
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-name: intermediate-block;
+  animation-timing-function: ease-out;
+}
+
+.horizontal-loaded__intermediate-block-1 {
+  animation-delay: 1s;
+}
+
+.horizontal-loaded__intermediate-block-2 {
+  animation-delay: 2s;
+}
+
+.horizontal-loaded__intermediate-block-3 {
+  animation-delay: 3s;
+}
+
+.horizontal-loaded__intermediate-block-4 {
+  animation-delay: 4s;
+}
+
+.horizontal-loaded__intermediate-block {
+  background-color: #f00;
+  height: 2px;
+  position: absolute;
+  right: -2px;
+  width: 2px;
+}
