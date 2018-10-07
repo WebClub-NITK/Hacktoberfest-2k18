@@ -1,5 +1,4 @@
-Name-Rahul Kumar
-Github username-rahul0324
-Institute-NITK
-Branch-CSE
-Year-2nd.
+Name: Rahul Kumar
+Github username: rahul0324
+Institute: NITK
+Degree and Year: 2nd Year, B.Tech
