@@ -17,3 +17,7 @@ This repository is under [MIT License](.github/LICENSE). For more information re
 ### Code of Conduct
 - This repository aims to encourage people to start making contributions to the open source community. Please support and help out others.
 - The [Code of Conduct](.github/CODE_OF_CONDUCT.md) specifies the general dos and don'ts for the repository.
+
+### Resources from the sessions 
+- Session-1 - [Version Control and Git](https://docs.google.com/presentation/d/1BG9mWdWCwyJz_ir2U6ZsG1cTKJ5FzZBY43Dzj9bA_vc/edit?usp=sharing)
+- Session-2 - [Working with Git branches](https://drive.google.com/open?id=17Y2g-coU2gQhRFNXYTIn2SCbggeeP6Kl)
