@@ -16,7 +16,7 @@ You probably don't want to read lots of instructions just to get this working (a
 
 ``` javascript
 // Displaying the horizontal loader at 60% complete
-HorizontalLoader.init( 'loader' ).show().set( 60 );
+HorizontalLoader.init().show().set( 60 );
 ```
 
 Did you see how easy that was?
