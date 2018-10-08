@@ -6,12 +6,12 @@ using namespace std;
 
 vector<vector<int>> FCFSalgo(vector<vector<int>> a) {
     unsigned int n=a.size();
-    map<int, int> process;
+    multimap<int, int> process;
     for(int i=0; i<n; i++){
-        process[a[i][0]] = a[i][1];
+        process.insert(pair<int,int>(a[i][0],a[i][1]));
     }
     vector<vector<int>> result(a.size());
-    map<int,int>::iterator itr;
+    multimap<int,int>::iterator itr;
     int i=0;
     for(itr=process.begin(); itr!=process.end(); ++itr){
         result[i].push_back(itr->first);
@@ -29,18 +29,22 @@ vector<vector<int>> FCFSalgo(vector<vector<int>> a) {
 }
 
 int main() {
-    int n=5;
+    int n=10;
+    srand(time(NULL));
     vector<vector<int>> input(n), output;
     int x;
-    cout << "Arrival\tBurst" << endl;
+    cout << "Arrival(s)\tBurst(ms)" << endl;
     for(int i=0; i<n; i++){
-        cin >> x;
+//        cin >> x;
+        x = rand()%50;
         input[i].push_back(x);
-        cin >> x;
+//        cin >> x;
+        x = rand()%10;
         input[i].push_back(x);
+        cout << input[i][0] << "\t\t" << input[i][1] << endl;
     }
     output = FCFSalgo(input);
-    cout << endl << "Process\tService" << endl;
+    cout << endl << "Process\tService(ms)" << endl;
     for(int i=0; i<n; i++){
         cout << output[i][0] << "\t" << output[i][1] << endl;
     }
