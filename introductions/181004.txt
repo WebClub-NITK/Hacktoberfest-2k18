@@ -1,0 +1,4 @@
+Name: Shruthan R
+github username: shruthanr
+Degree and year: BTech, 1st year
+Branch: CSE
