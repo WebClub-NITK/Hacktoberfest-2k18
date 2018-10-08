@@ -37,5 +37,11 @@ typedef string_vec_vector string_vec_vec;
 #define T table
 #include "vector.h"
 #undef T
+typedef table_vector table_vec;
+
+#define T tuple
+#include "vector.h"
+#undef T
+typedef tuple_vector tuple_vec;
 
 #endif /* GEN_VECTOR_H */
