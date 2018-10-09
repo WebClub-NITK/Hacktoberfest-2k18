@@ -1,0 +1,17 @@
+.scrollTopButton {
+    padding: 5px 9px 5px 30px;
+    color: rgb(51, 51, 51);
+
+    border: 1px solid rgb(51, 51, 51);
+    border-radius: 3px;
+
+    background-color: rgb(175, 175, 175);
+
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='25' height='10'><polygon fill='rgb(51,51,51)' points='25,10 15,0 5,10'/></svg>");
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+
+.scrollTopButton:hover {
+    background-color: rgb(135, 135, 135);
+}
