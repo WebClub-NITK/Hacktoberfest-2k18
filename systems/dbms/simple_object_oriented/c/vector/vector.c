@@ -17,20 +17,20 @@
 #define GROWTHFACTOR 2
 
 /* constructor */
-void TP(T, _vec_init) (TP(T, _vector) * v) {
+void TP(T, _vec_init) (TP(T, _vec) * v) {
   v->data = malloc (sizeof( T ) * STARTSIZE );
   v->psize = STARTSIZE;
   v->lsize = 0;
 }
 
 /* returns the logical size of the vector */
-size_t TP(T, _vec_length) ( TP(T, _vector) * v) {
+size_t TP(T, _vec_length) ( TP(T, _vec) * v) {
   return v->lsize;
 }
 
 /* Push an element to the end of the vector. Returns the size of the
  * array. Will return 0 if there is not sufficient memory. */
-size_t TP (T, _vec_push) ( TP(T, _vector) * v, T elem) {
+size_t TP (T, _vec_push) ( TP(T, _vec) * v, T elem) {
   if (v->lsize == v->psize) {
     v->psize *= GROWTHFACTOR;
     
@@ -50,7 +50,7 @@ size_t TP (T, _vec_push) ( TP(T, _vector) * v, T elem) {
   return v->lsize;
 }
 
-T TP (T, _vec_pop) ( TP(T, _vector) * v) {
+T TP (T, _vec_pop) ( TP(T, _vec) * v) {
   assert (v->lsize > 0);
 
   v->lsize --;
@@ -63,21 +63,21 @@ T TP (T, _vec_pop) ( TP(T, _vector) * v) {
   return value;
 }
 
-void TP (T, _vec_set) ( TP(T, _vector) * v, size_t index, T elem) {
+void TP (T, _vec_set) ( TP(T, _vec) * v, size_t index, T elem) {
   assert (index < v->lsize);
   assert (index >= 0);
 
   v->data[index] = elem;
 }
 
-T TP(T, _vec_get) ( TP(T, _vector) * v, size_t index) {
+T TP(T, _vec_get) ( TP(T, _vec) * v, size_t index) {
   assert (index < v->lsize);
   assert (index >= 0);
 
   return v->data[index];
 }
 
-void TP (T, _vec_delete) ( TP(T, _vector) * v, size_t index) {
+void TP (T, _vec_delete) ( TP(T, _vec) * v, size_t index) {
   assert (index < v->lsize);
   assert (index >= 0);
   assert (v->lsize > 0);
@@ -94,7 +94,7 @@ void TP (T, _vec_delete) ( TP(T, _vector) * v, size_t index) {
 /* Insert an element into an array at index "index". If there is
    insuficcient memory, the function returns zero, otherwise it will
    return the new size of the array */
-size_t TP (T, _vec_insert) ( TP(T, _vector) * v, size_t index, T elem) {
+size_t TP (T, _vec_insert) ( TP(T, _vec) * v, size_t index, T elem) {
   assert (index < v->lsize);
   assert (index >= 0);
 
@@ -119,7 +119,7 @@ size_t TP (T, _vec_insert) ( TP(T, _vector) * v, size_t index, T elem) {
   return v->lsize;
 }
 
-size_t TP (T, _vec_reserve) ( TP(T, _vector) * v, size_t psize) {
+size_t TP (T, _vec_reserve) ( TP(T, _vec) * v, size_t psize) {
   T * block;
   block = realloc(v->data, sizeof( T ) * psize);
 
@@ -137,7 +137,7 @@ size_t TP (T, _vec_reserve) ( TP(T, _vector) * v, size_t psize) {
   return psize;
 }
 
-void TP (T, _vec_free) ( TP(T, _vector) * v) {
+void TP (T, _vec_free) ( TP(T, _vec) * v) {
   free (v->data);
 }
 

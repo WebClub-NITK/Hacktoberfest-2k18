@@ -1,9 +1,12 @@
 #include <stdio.h>
 
+#include "string_vec.h"
+#include "string.h"
+#include "database.h"
 #include "parsecsv.h"
 #include "vector/gen_vector.h"
 
-char_vector read_string () {
+string read_string () {
     char c;
     string s;
   
@@ -32,7 +35,6 @@ void print_string_vec_vec (string_vec_vec * svv) {
 
 void removeCommas (void) {
     string input = read_string();
-    int status;
     string_vec_vec db;
     string_vec_vec_init(&db);
     
@@ -43,7 +45,22 @@ void removeCommas (void) {
 
 
 int main (int argc, char** argv) {
-    removeCommas();
+    database db;
+    database_init(&db);
 
+    char * columns_raw[] = {
+        "CGPA",
+        "RollNo", 
+        "Name",
+    };
+    string_vec columns = string_vec_from_raw (columns_raw, 3);
+    string table = string_from_raw ("StudentDetails");
+
+    string s = database_query(&db, columns, table, 10);
+
+    string_print (&s);
+
+    char_vec_free(&s);
+    database_free(&db);
     return 0;
 }

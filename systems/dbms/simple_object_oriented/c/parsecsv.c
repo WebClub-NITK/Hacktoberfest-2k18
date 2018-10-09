@@ -2,27 +2,15 @@
 #include "parser/parser.h"
 #include "parsecsv.h"
 
-void print_string (string str) {
-    for (size_t x = 0; x < char_vec_length(&str); x++) {
-        putchar (char_vec_get(&str, x));
-    }
-}
-
-void print_string_vec (string_vec * vec) {
-    for (size_t y = 0; y < string_vec_length(vec); y++) {
-        print_string (string_vec_get(vec, y));
-    }
-}
-
-static parse_result parse_file (string_vec_vector * result, char * str);
-static parse_result parse_record (string_vector * result, char * str);
+static parse_result parse_file (string_vec_vec * result, char * str);
+static parse_result parse_record (string_vec * result, char * str);
 static parse_result parse_field (string * result, char * str);
 static parse_result escaped (string * result, char * str);
 static parse_result inner_escaped (string * result, char * str);
 static parse_result single_escaped_char (char * result, char * str);
 static parse_result non_escaped (string * result, char * str);
 
-int parse_csv (string_vec_vector * db, char * str) {
+int parse_csv (string_vec_vec * db, char * str) {
     parse_result pos;
     pos = parse_file (db, str);
 
@@ -35,9 +23,9 @@ int parse_csv (string_vec_vector * db, char * str) {
 };
 
 
-static parse_result parse_file (string_vec_vector * result, char * str) {
+static parse_result parse_file (string_vec_vec * result, char * str) {
     parse_result pos;
-    string_vector record;
+    string_vec record;
     string_vec_init (&record);
 
     pos = parse_record (&record, str);
@@ -62,7 +50,7 @@ static parse_result parse_file (string_vec_vector * result, char * str) {
     return pos;
 }
 
-static parse_result parse_record (string_vector * result, char * str) {
+static parse_result parse_record (string_vec * result, char * str) {
     parse_result pos;
     string field;
     char_vec_init (&field);

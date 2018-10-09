@@ -17,31 +17,31 @@
  * "int_vec_push", "int_vec_get" etc
  */
 
-#include "table.h"
+#define T size_t
+#include "vector.h"
+#undef T
 
 #define T char
 #include "vector.h"
 #undef T
-typedef char_vector string;
+typedef char_vec string;
 
 #define T string
 #include "vector.h"
 #undef T
-typedef string_vector string_vec;
 
 #define T string_vec
 #include "vector.h"
 #undef T
-typedef string_vec_vector string_vec_vec;
 
-#define T table
-#include "vector.h"
-#undef T
-typedef table_vector table_vec;
-
+#include "../tuple.h"
 #define T tuple
 #include "vector.h"
 #undef T
-typedef tuple_vector tuple_vec;
+
+#include "../relation.h"
+#define T relation
+#include "vector.h"
+#undef T
 
 #endif /* GEN_VECTOR_H */
