@@ -13,19 +13,19 @@ Implemented in C++
 Sample-Inputs: 
 ### 1
 <br><br>
-![alt text](https://clwrcq.bn.files.1drv.com/y4meiagM8WJ2jO9GjGjYAXvQMxU92PAN9Sbzrc5xAFbqCGkSkRki0skeOMkiZjFebkPmd1InlTSncV-7resP1i1QndVyXOKJxslKPjcflxnrRkRayYC_Zezl6zxqoovCK6r16FjYuVGFfdf-sUq2aOtQB7HnyrDQyo3noOCHC6rqY2OBnSkTW3l-RDzEg0CPkafq2zD2HQcfz9m86I2dUIslQ?width=438&height=434&cropmode=none)
+![alt text](https://clwrcq.bn.files.1drv.com/y4maKfGl4U-llJlmzEcBGFHdSUTEWhXbUCB-DHI-3i5WMJp8RS03CTP18uoG4VcrVC3kqoe5UVdEz2myIcuaK_L0VrxbUn5g7Pdnkvo8yYayElCceUwFn0Y4JFKHTeIo1ZtM7yqb174kqZ1zJt4WWDUHBHgN_aqumdgGwPgmpXSL74t7zErRtz1Skxj7wOq7Rx8S0fDfhFVE_HDTiGTNn3akA?width=423&height=473&cropmode=none)
 <br><br> 
 ### 2 <br><br>
-![alt text](https://clxhwg.bn.files.1drv.com/y4mTdPMUEYAzV9eWqep9_biy4Tn3sREHR2UBdy_AzCQboqda4AkgLXrn9KJ4oIU7dYBWlm5k24VhdXwbjVtisSKhvq_rHu4swpT07KvuV9rm_7HghnoytRJWmRPeDBuAhChkFXQZ45ceraruFbtngNMQVMNyfDTCjjCZYCt_Pui73w3EhKndF9diJDzNnsIx0xGhDOM_PwVUTIJscAZ68qNyQ?width=415&height=435&cropmode=none)
+![alt text](https://clxhwg.bn.files.1drv.com/y4misnSchYzNUMoiyNzpZJti94GrBL8DofBVEz-I0s06HsAg6r1k081GdYzK4TuzLkMECqKel0BPuM0qTH1JKes69HqhqylJZg1Az4SGGPdiOxDyUam_1_NibQdimblgcfSGrUg3TNusQETTuAG-pcOruG_qla4EJQ14hurJEMDDNEsvp725BLgMhLAJxeFnUDegCFqlFFOdde8O5HGbu6WKA?width=414&height=477&cropmode=none)
 <br><br>
 ### 3 <br><br>
-![alt text](https://clvg5g.bn.files.1drv.com/y4mMpOla5q7TykNInWNWaKf_HUoteOy3c1R-O67AJrKNMJ8xp4f5J_HtgpeZwUPG110aMZrCx_Sko52c-h9is_6hXy_fyRNrxaRZ_rcS3sRV7u8bkzyvdm6SqE3igHcb4Rd18onezK4UgVh3lMgNKO-QsabF_A3dPSGs20tuNX-cmwlIbjtlqrRfI70xaqE42rOmYD84ounN0BTEO89voX0-Q?width=419&height=434&cropmode=none)
+![alt text](https://clvg5g.bn.files.1drv.com/y4mMxOP3sheZIPs2oZxfeKIz2ozQWL2ZnMQ37Mg8FulrJw2hD167YOfb2miwPWFGsxlghVpszDgCygO_dzR7HmPRYiewV9X0Wit9nPqNv1hg1V3OBAe2PpFMFqae-iNbQ8NuyEPjK0HGX2W_uEmbphRvFbmoOwxlQLP2pkw9JJih4F8o3-fqSSpZOTT-e6QaUL6xAlWFez5O0PaZWgm3rJzTg?width=437&height=474&cropmode=none)
 <br><br>
 ### 4 <br><br>
-![alt text](https://clv1ia.bn.files.1drv.com/y4mbZ_7jzM31GkRhXy2DVPETfHCuAGtdpR8dLv9i7CbTdJGIOkTFggNchnqD_p56_1NCJSSPcxcy2W_ch20qY0CAPnbxkG-xJ8AXdp-6UKavL9ce_wTCq9ulk03h2jKMiitDOIbeBb2Zf703DjoSi7T3I3985osv-IAN_pbysBtptRG1ORKuFaFUlTRI9VVnxqbe2eHzIP3vD6WjZR-YlXgvw?width=408&height=435&cropmode=none)
+![alt text](https://clv1ia.bn.files.1drv.com/y4mLOSXPCUmBZqm5VCzCUWDLtex1-cqncVjRvgfCjN2SKpz3_2gjItvQcIa_uNwMqo_RdCbsxZ8HBMJ6S6sTEi76ajoL_js4voCc2roAQ_QhIvoZefLzSs9-igKAJx8z-tujEIXMApQk97uSj2EicoQA4Xyti7N0qJ6z6G2Bc5iFIwDU44EOpa_bg2F4LzjPSs76pNxQj61vhoPWJvHb86GVg?width=411&height=474&cropmode=none)
 <br><br>
 ### 5 <br><br>
-![alt text](https://cluqqq.bn.files.1drv.com/y4mJ5UyKb4ht9zZo3v_LF5kuSX2laa1a5jMcVkU0oCE0y1t5Og6-VKZzifmZx5zNSMc8IZ2hd67bP4WBbKC3gBeYpb_iwmQBvhAhnkwTYGdjzSxSlNj2UrWWfot4JpsQvAaVYiCmBKTLncCj-LtgmT-ZiiWz_KKUzIMGcYLb8gOWFlq1sivIh7oxutE-zJP8epDkHSAhXOxp020ZvR9qsQYHg?width=412&height=432&cropmode=none)
+![alt text](https://cluqqq.bn.files.1drv.com/y4mS1_wTKqyBkXARQcwuwBH4SAzBokSVv_9aFrp6g3J-W0p5f1k1z72Vlhr3GLrx_kMh-DYKyb-xhFIzqTL_o-1vQ9DntAlCarrq4gLbNOzdZZseQSRcX008pYEs8TmRHrf57fHjTfwqO3FYz9wAMBOQIjUY2e-8pCAH-c3fUbC-OMv17eQBgVxB51ffhvw3-QyZESA8T3IenHYa0OesjiOvA?width=412&height=473&cropmode=none)
 <br><br>
 ### How to run
 Compile and run,
