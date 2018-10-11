@@ -23,7 +23,7 @@ tuple.h : vector/gen_vector.h
 vector/gen_vector.h : vector/vector.h
 
 database.o : database.h relation.h string_vec.h string.h
-main.o : string_vec.h database.h parsecsv.h vector/gen_vector.h
+main.o : string_vec.h string.h database.h parser/parser.h vector/gen_vector.h
 parsecsv.o : parsecsv.h  vector/gen_vector.h
 parser/parser.o : parser/parser.h vector/gen_vector.h
 relation.o : relation.h tuple.h string.h parsecsv.h

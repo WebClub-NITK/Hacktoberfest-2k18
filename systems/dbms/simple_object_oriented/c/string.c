@@ -29,6 +29,24 @@ void string_print (string * str) {
     }
 }
 
+string string_new_fixedw (string * str, size_t len) {
+    string new; char_vec_init(&new);
+    size_t orig_len = char_vec_length(str);
+    if (orig_len <= len) {
+        string_append(&new, str);
+        for (; orig_len < len; orig_len++) {
+            char_vec_push(&new, ' ');
+        }
+    }
+    else {
+        for (size_t i = 0; i < len - 3; i++) {
+            char_vec_push (&new, char_vec_get(str, i));
+        }
+        string_append_raw (&new, "...");
+    }
+    return new;
+}
+
 int string_cmp (string * a, string * b) {
     size_t l1 = char_vec_length(a);
     size_t l2 = char_vec_length(b);

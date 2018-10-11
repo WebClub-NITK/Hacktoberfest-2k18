@@ -90,6 +90,8 @@ string relation_query (relation * this, string_vec columns, size_t num) {
         }
     }
 
+    size_t rownum = tuple_vec_length(&this->data);
+    num = num < rownum ? num : rownum;
     string s; char_vec_init(&s);
     for (size_t i = 0; i < num; i++) {
         tuple tuple = tuple_vec_get(&this->data, i);

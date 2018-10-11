@@ -1,66 +1,133 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
 
 #include "string_vec.h"
 #include "string.h"
 #include "database.h"
-#include "parsecsv.h"
+#include "parser/parser.h"
 #include "vector/gen_vector.h"
 
-string read_string () {
-    char c;
-    string s;
-  
-    char_vec_init(&s);
-  
-    while (EOF != (c = getchar())) {
-        char_vec_push(&s, c);
-    }
-    char_vec_push(&s, '\0');
+parse_result parse_comma_separated (string_vec * results, char * str);
 
-    return s;
-}
-
-void print_string_vec_vec (string_vec_vec * svv) {
-    string_vec_vec lines = *svv;
-    for (size_t x = 0; x < string_vec_vec_length(&lines); x++) {
-        string_vec line = string_vec_vec_get(&lines, x);
-
-        for (size_t y = 0; y < string_vec_length(&line); y++) {
-            string field = string_vec_get(&line, y);
-            printf("|%s|\t", field.data);
-        }
-        printf("\n");
-    }
-}
-
-void removeCommas (void) {
-    string input = read_string();
-    string_vec_vec db;
-    string_vec_vec_init(&db);
+const int VALID_QUERY = 0;
+const int EXIT_CMD = 1;
+const int INVALID_QUERY = 2;
+int parse_query (string_vec * columns, string * table, int * limit, char * str) {    
+    parse_result pos;
     
-    parse_csv (&db, input.data);
+    pos = parse_eat_whitespace(str);
+    pos = parse_string("EXIT", pos.next_pos);
+    if (!parse_is_error(pos)) {
+        return EXIT_CMD;
+    }
 
-    print_string_vec_vec (&db);
+    pos = parse_eat_whitespace(str);
+    pos = parse_string ("SELECT", pos.next_pos);
+    if (parse_is_error(pos)) {
+        return INVALID_QUERY;
+    }
+
+    pos = parse_comma_separated (columns, pos.next_pos);
+    if (parse_is_error(pos)) {
+        return INVALID_QUERY;
+    }
+
+    pos = parse_string ("FROM", pos.next_pos);
+    if (parse_is_error(pos)) {
+        return INVALID_QUERY;
+    }
+    pos = parse_eat_whitespace(pos.next_pos);
+    
+    char * old_pos = pos.next_pos;
+    pos = parse_until_one_of(table, " ,\n\t", pos.next_pos);
+    if (pos.next_pos == old_pos) {
+        return INVALID_QUERY;
+    }
+    
+    pos = parse_eat_whitespace(pos.next_pos);
+    pos = parse_string ("LIMIT", pos.next_pos);
+    if (parse_is_error(pos)) {
+        return INVALID_QUERY;
+    }
+    pos = parse_eat_whitespace(pos.next_pos);
+
+    char * next_pos;
+    *limit = strtol(pos.next_pos, &next_pos, 10);
+    
+    return VALID_QUERY;
+}
+
+parse_result parse_comma_separated (string_vec * columns, char * str) {
+    parse_result pos = parse_eat_whitespace(str);
+    
+    string column; char_vec_init(&column);
+    char * old_pos = pos.next_pos;
+    pos = parse_until_one_of(&column, " ,\n\t", pos.next_pos);
+    
+    while (pos.next_pos != old_pos) {
+        pos = parse_eat_whitespace (pos.next_pos);    
+        string_vec_push (columns, column);
+
+        old_pos = pos.next_pos;
+        pos = parse_char(',', pos.next_pos);
+        
+        if (parse_is_error(pos)) {
+            return parse_accept(old_pos);
+        }
+        
+        pos = parse_eat_whitespace (pos.next_pos); 
+        
+        char_vec_init (&column);
+        old_pos = pos.next_pos;
+        pos = parse_until_one_of(&column, " ,\n\t", pos.next_pos);
+    }
+
+    char_vec_free (&column);
+    return pos;  
 }
 
 
 int main (int argc, char** argv) {
     database db;
     database_init(&db);
+    FILE * log = fopen("data/log.txt", "a");
 
-    char * columns_raw[] = {
-        "CGPA",
-        "RollNo", 
-        "Name",
-    };
-    string_vec columns = string_vec_from_raw (columns_raw, 3);
-    string table = string_from_raw ("StudentDetails");
+    char user_id[1024];
+    char line_buf[1024];
 
-    string s = database_query(&db, columns, table, 10);
+    printf("User ID: ");
+    fgets(user_id, 1023, stdin);  
 
-    string_print (&s);
+    while (1) {
+        string_vec columns; string_vec_init(&columns);
+        char_vec table; char_vec_init(&table);
+        int limit;
+        
+        printf("\ndb> ");
+        
+        fgets(line_buf, 1023, stdin);
+        
+        int result = parse_query (&columns, &table, &limit, line_buf);
+        if (EXIT_CMD == result) {
+            break;
+        }
+        else if (INVALID_QUERY == result) {
+            puts ("Invalid query, queries are of the form 'SELECT column1, column2, ..., columnN FROM tablename LIMIT limit'");
+            continue;
+        }
+        
+        string s = database_query(&db, columns, table, limit);
+        string_print (&s);
+        char_vec_free(&s);
 
-    char_vec_free(&s);
+        fprintf(log, "%s %ld %s\n", user_id, time(NULL), line_buf);
+        
+        char_vec_free (&table);
+        string_vec_free (&columns);
+    }
+
     database_free(&db);
     return 0;
 }
