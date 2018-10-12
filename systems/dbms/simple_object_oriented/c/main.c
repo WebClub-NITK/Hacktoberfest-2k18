@@ -91,6 +91,7 @@ parse_result parse_comma_separated (string_vec * columns, char * str) {
 
 int main (int argc, char** argv) {
     database db;
+    time_t curtime;
     database_init(&db);
     FILE * log = fopen("data/log.txt", "a");
 
@@ -122,7 +123,9 @@ int main (int argc, char** argv) {
         string_print (&s);
         char_vec_free(&s);
 
-        fprintf(log, "%s %ld %s\n", user_id, time(NULL), line_buf);
+        
+        time(&curtime);
+        fprintf(log, "%s %s %s\n", user_id, ctime(&curtime), line_buf);
         
         char_vec_free (&table);
         string_vec_free (&columns);
