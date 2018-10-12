@@ -1,0 +1,20 @@
+30
+ Fri Oct 12 14:59:34 2018
+ SELECT Student_RollNo, Subject1_Marks FROM MarksDetails LIMIT 15
+
+30
+ Fri Oct 12 14:59:39 2018
+ SELECT CGPA, Department, RollNo FROM StudentDetails LIMIT 11
+
+30
+ Fri Oct 12 14:59:44 2018
+ SELECT Name, Department, Graduation_Year FROM StudentDetails LIMIT 20
+
+30
+ Fri Oct 12 14:59:48 2018
+ SELECT Subject1_Marks ,Subject1_Marks     , Subject1_Marks FROM MarksDetails LIMIT 5
+
+30
+ Fri Oct 12 14:59:53 2018
+ SELECT Subject1_Marks ,RollNo     , Name FROM StudentDetails LIMIT 17
+
