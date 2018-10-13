@@ -1,1 +1,0 @@
-# Predict species of Iris Flower using Support Vector Classifier
