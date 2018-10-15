@@ -1,6 +1,6 @@
 #include<iostream>
 #include<conio.h>
-#include<stdlib.h>
+#include<stdlio.h>
 using namespace std;
 int cost[10][10],i,j,k,n,m,c,visit,visited[10],l,v,count,count1,vst,p;
  
