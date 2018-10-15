@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>String to url slug example</title>
+  <script src="./string_to_url_slug.js"></script>
+  <script>
+    function test() {
+
+      testArray = [
+        "How to use Github",
+        "Why are some apples green?",
+        "How to order a pizza",
+        "àáäâãåèéëêìíïîòóöôùúüûñçßÿœæŕśńṕẃǵǹḿǘẍźḧŠŽšžŸÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖÙÚÛÜÝ",
+        "Tom & Jerry"
+      ];
+
+      testArray.forEach((element) => {
+        let table = document.getElementById("example");
+        let tr = document.createElement("tr");
+        let tdStrInput = document.createElement("td");
+        let tdUrlSlugOutput = document.createElement("td");
+        let strInput = document.createTextNode(element);
+        let urlSlugOutput = document.createTextNode(string_to_url_slug(element));
+
+        tdStrInput.appendChild(strInput);
+        tdUrlSlugOutput.appendChild(urlSlugOutput);
+        tr.appendChild(tdStrInput);
+        tr.appendChild(tdUrlSlugOutput);
+        table.appendChild(tr);
+      });
+    }
+  </script>
+</head>
+
+<body onload="test();">
+  <table id="example">
+    <tr>
+      <th>Input string</th>
+      <th>Output url slug</th>
+    </tr>
+  </table>
+</body>
+
+</html>
