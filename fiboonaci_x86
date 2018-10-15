@@ -1,0 +1,25 @@
+; Fibonacci n-th number (modulo 2^32)
+;
+; input:
+; 	ecx = n
+; modifies:
+; 	eax, ebx, ecx
+; ouput:
+; 	eax = number
+; size:
+; 	16 bytes
+
+use32
+
+_fibonacci:
+	xor    eax, eax           ; 31 c0
+	jecxz  _fibonacci_end     ; e3 0b
+	dec    ecx                ; 49
+	inc    eax                ; 40
+	jecxz  _fibonacci_end     ; e3 07
+	xor    ebx, ebx           ; 31 db
+_fibonacci_loop:
+	xadd   eax, edx           ; 0f c1 d8
+	loop   _fibonacci_loop    ; e2 fb
+_fibonacci_end:
+	ret                       ; c3
