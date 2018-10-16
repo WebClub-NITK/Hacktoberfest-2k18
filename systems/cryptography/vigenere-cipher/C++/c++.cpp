@@ -1,72 +1,47 @@
-#include <iostream>
-#include <string>
+#include<bits/stdc++.h>
 using namespace std;
- 
-class Vigenere
+string encrypt(string s,string key)
 {
-public:
-  string key;
- 
-  Vigenere(string key)
-  {
-    for(int i = 0; i < key.size(); ++i)
+    long long int s1=s.size();
+    long long int s2=key.size(),j=0;
+    string res;
+    for(long long int i=0;i<s1;i++)
     {
-      if(key[i] >= 'A' && key[i] <= 'Z')
-        this->key += key[i];
-      else if(key[i] >= 'a' && key[i] <= 'z')
-        this->key += key[i] + 'A' - 'a';
+      long long int p=s[i];
+      long long int k=key[j%s2];
+      j=j+1;
+      k=k-97;
+      p=p-97;
+      long long int r=(p+k)%26;
+      r=r+'a';
+      res.push_back(r);
     }
-  }
- 
-  string encrypt(string text)
-  {
-    string out;
- 
-    for(int i = 0, j = 0; i < text.length(); ++i)
+    return res;
+}
+string decrypt(string s,string key)
+{
+    long long int s1=s.size();
+    long long int s2=key.size(),j=0;
+    string res;
+    for(long long int i=0;i<s1;i++)
     {
-      char c = text[i];
- 
-      if(c >= 'a' && c <= 'z')
-        c += 'A' - 'a';
-      else if(c < 'A' || c > 'Z')
-        continue;
- 
-      out += (c + key[j] - 2*'A') % 26 + 'a'; 
-      j = (j + 1) % key.length();
+      long long int p=s[i];
+      long long int k=key[j%s2];
+      j=j+1;
+      long long int r=(p-k+26)%26+'a';
+      res.push_back(r);
     }
- 
-    return out;
-  }
- 
-  string decrypt(string text)
-  {
-    string out;
- 
-    for(int i = 0, j = 0; i < text.length(); ++i)
-    {
-      char c = text[i];
- 
-      if(c >= 'a' && c <= 'z')
-        c += 'A' - 'a';
-      else if(c < 'A' || c > 'Z')
-        continue;
- 
-      out += (c - key[j] + 26) % 26 + 'a'; 
-      j = (j + 1) % key.length();
-    }
- 
-    return out;
-  }
-};
- 
+    return res;
+}
 int main()
-{	string original,key;
-	cin>>original;
-	cin>>key;
-  Vigenere cipher(key);
- 
-  string encrypted = cipher.encrypt(original);
-  string decrypted = cipher.decrypt(encrypted);
- 
-  cout << "Encrypted: " << encrypted << endl;
+{
+  string s,k;
+    cout<<"Please enter the text to be encrypted:-"<<endl;
+    cin>>s;
+    cout<<"Please enter the KEY:-"<<endl;
+    cin>>k;
+    string cipher=encrypt(s,k);
+    cout<<"The encrypted cipher is:- "<<cipher<<endl;
+    cout<<"The decrypted message is:- "<<decrypt(cipher,k)<<endl;
+  return 0;
 }
