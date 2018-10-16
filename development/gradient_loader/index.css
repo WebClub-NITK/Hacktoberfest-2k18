@@ -1,0 +1,65 @@
+html {
+  font-size: 62.5%; /* 10px */
+}
+
+.profile-placeholder {
+  display: flex;
+  align-items: center;
+}
+
+.profile-lines {
+  margin-left: 1.5rem;
+}
+
+.circle {
+  width: 50px;
+  height: 50px;
+  background-color: lightgray;
+  border-radius: 50%;
+}
+
+.line {
+  background-position: -1000px;
+  margin: 1.2rem 0;
+  height: 1rem;
+  border-radius: 1rem;
+  width: 50px;
+  background-color: lightgray;
+}
+
+.circle,
+.line {
+  animation: load 2s linear infinite;
+  background: linear-gradient(to right, #eee 5%, #ddd 15%, #eee 20%);
+  background-size: 100rem;
+}
+
+@keyframes load {
+  from {
+    background-position: -30rem;
+  }
+
+  to {
+    background-position: 30rem;
+  }
+}
+
+.line--tiny {
+  width: 12rem;
+}
+
+.line--small {
+  width: 18rem;
+}
+
+.line--medium {
+  width: 24rem;
+}
+
+.line--big {
+  width: 30rem;
+}
+
+.line--huge {
+  width: 36rem;
+}
