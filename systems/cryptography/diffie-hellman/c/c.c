@@ -96,24 +96,14 @@ int cmp_long_long_int(long long*a,long long*b){
 
 int is_g_safe(long long int g, long long int p){
     long long int i=1, g_i=g, q=(long long int)((p-1)/2);
-    long long int *chk_list;
-    if(is_prime(g)){
-        return 1;
-    }
-    chk_list = (long long int*)malloc((q)*sizeof(long long int));
-    chk_list[0] = g_i;
     // check g^i !≡ 1 mod p
+    if(1==g_i){
+        return 0;
+    }
     for(i;i<q;++i){
         g_i*=g;
         g_i%=p;
-        chk_list[i] = g_i;
-    }
-    qsort(chk_list, q, sizeof(long long int), cmp_long_long_int);
-    for(i=0;i<q;++i){
-        if(1<chk_list[i]){
-            break;
-        }
-        if(1==chk_list[i]){
+        if(1==g_i){
             return 0;
         }
     }
