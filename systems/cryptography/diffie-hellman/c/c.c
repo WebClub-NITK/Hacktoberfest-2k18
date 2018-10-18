@@ -97,6 +97,7 @@ int cmp_long_long_int(long long*a,long long*b){
 int is_g_safe(long long int g, long long int p){
     long long int i=1, g_i=g, q=(long long int)((p-1)/2);
     // check g^i !≡ 1 mod p
+    g_i%=p;
     if(1==g_i){
         return 0;
     }
