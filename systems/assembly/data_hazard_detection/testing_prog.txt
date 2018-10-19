@@ -1,0 +1,8 @@
+load r2, a
+load r4, b
+load r3, c
+load r1, r2
+add r2, r1, r3
+mul r5, r4, r2
+mov r1, r2 
+mul r3, r1, r5  
