@@ -3,6 +3,7 @@
 #include <stdlib.h> // srand(), rand()
 #include <vector>	// std::vector, vector.push_back()
 #include <cstdio> // printf()
+#include <string> // std::string, std::to_string()
 
 int main() 
 {
@@ -17,9 +18,9 @@ int main()
 
 	int tt[n] = {}; // turn around time for each process
 
-	int st[n] = {}; // schedule time for each process
-
 	int bt[n] = {}; // initial burst time for each process
+
+	std::string st[n] = {""}; // schedule times for each process
 
 	int cs = 0; // total number of context switches
 
@@ -29,7 +30,7 @@ int main()
 
 	srand(time(NULL));
 
-	// initializing processes with random values and printing them
+	// initializing processes with random values
 	for(int i = 0; i < n; i++) 
 	{
 		processes[i][0] = rand() % 10; // burst time
@@ -50,13 +51,14 @@ int main()
 		}
 	}
 
+    // storing initial burst time values for processes in bt
 	for(int i = 0; i < n; i++) bt[i] = processes[i][0];
 
 	// printing processes table
-	printf("Process_index	arrival_time	burst_time\n");
+	std::cout<<"ProcessNo	arrival_time	burst_time"<<std::endl;
 	for(int i = 0; i < n; i++) 
 	{
-		printf("%d				%d 				%d\n", i, processes[i][1], processes[i][0]);
+		std::cout<<i<<"		"<<processes[i][1]<<"		"<<processes[i][0]<<std::endl;
 	}
 
 	bool done = false;
@@ -70,8 +72,6 @@ int main()
 		for(int i = 0; i < n; i++) 
 		{
 
-			st[i] = t;
-
 			if(processes[i][0] > quantum) 
 			{
 				 // there are processes pending
@@ -80,18 +80,18 @@ int main()
 				// decreasing burst time of current process
 				processes[i][0] -= quantum;
 
-				st[i] += quantum;
+				st[i].append(std::to_string(t) + " ");
+
 				t += quantum;
 				cs++;
 
 				order.push_back(i);
 
-			} else {
+			} else if(processes[i][0] > 0){
 				t += processes[i][0];
-				st[i] += processes[i][0];
 
 				// turn-around time is completion_time - arrival_time
-				tt[i] = t - processes[i][1];
+				tt[i] = (t + processes[i][1]) - processes[i][1];
 
 				// waiting time is turn_around_time - initial_burst_time
 				wt[i] = t - bt[i];
@@ -102,27 +102,27 @@ int main()
 		}
 	}
 
-	printf("\n\n-----=====\tRESULTS\t=====-----\n\n");
-
-	printf("Total number of context switches: %d\n", cs);
-	printf("Total time: %d\n", t);
+	std::cout<<"Total number of context switches: "<<cs<<std::endl;
+	
+	std::cout<<"Total time: "<<t<<std::endl;
 
 	// printing the order in which processes were scheduled
 
-	printf("Process order: \n");
+	std::cout<<"Process order: ";
 
 	for(int i = 0; i < order.size(); i++) 
 	{
-		printf(" --> Process %d", order.at(i));
+		std::cout<<" ->"<<order.at(i)<<" ";
 	}
 
-	printf("\n\n");
+	std::cout<<std::endl<<std::endl;
 
-	printf("Process_index	waiting_time	turn_around_time	schedule_time\n");
+	std::cout<<"ProcessNo	waiting_time	turn_around_time	schedule_times"<<std::endl;
 
 	for(int i = 0; i < n; i++) 
 	{
-		printf("%d				%d				%d					%d\n", i, wt[i], tt[i], st[i]);
+		std::cout<<i<<"		"<<wt[i]<<"		"<<tt[i]<<"			"<<st[i]<<std::endl;
+
 	}
 
 	return 0;
