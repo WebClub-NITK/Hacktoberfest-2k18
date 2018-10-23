@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Horizontal Loader</title>
+
+    <link rel="stylesheet" href="index.css" />
+  </head>
+
+  <body>
+    <script src="index.js"></script>
+    <script>
+      // These setTimeout functions are needed as CSS animaitions do not apply
+      // straight away to dynamically created elements.
+      HorizontalLoader.init( { showIntermediateBlocks: true } );
+      setTimeout( function() {
+        HorizontalLoader.show().set( 60, 3 );
+
+        setTimeout( function() {
+          HorizontalLoader.set( 100, 2 );
+
+          setTimeout( function() {
+            HorizontalLoader.hide();
+          }, 2350 );
+        }, 4000 );
+      }, 0 );
+    </script>
+  </body>
+</html>
