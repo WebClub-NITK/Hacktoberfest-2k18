@@ -14,6 +14,8 @@ int main()
 
 	int processes[n][2] = {};
 
+	int queque[n] = {}; // processes that are in the ready queque
+
 	int wt[n] = {}; // waiting time for each process
 
 	int tt[n] = {}; // turn around time for each process
@@ -68,46 +70,74 @@ int main()
 	{
 		done = true;
 
-		// traversing processes one by one
-		for(int i = 0; i < n; i++) 
-		{
-
-			if(processes[i][0] > quantum) 
-			{
-				 // there are processes pending
-				done = false;
-
-				// decreasing burst time of current process
-				processes[i][0] -= quantum;
-
-				st[i].append(std::to_string(t) + " ");
-
-				t += quantum;
-				cs++;
-
-				order.push_back(i);
-
-			} else if(processes[i][0] > 0){
-				t += processes[i][0];
-
-				// turn-around time is completion_time - arrival_time
-				tt[i] = (t + processes[i][1]) - processes[i][1];
-
-				// waiting time is turn_around_time - initial_burst_time
-				wt[i] = t - bt[i];
-
-				// last cycle of process
-				processes[i][0] = 0;
+		// traversing all processes one by one
+		for(int k = 0; k < n; k++) 
+		{	
+			if(processes[k][1] <= t && processes[k][0] != -1) {
+				queque[k] = true;
 			}
 		}
-	}
+
+			// traversing processes in the ready queque
+			for(int i = 0; i < n; i++)
+			{
+				// checking if the current process is in the ready queque
+				if(queque[i])
+				{
+					if(processes[i][0] >= quantum) 
+					{
+
+						t += quantum;
+
+						 // there are processes pending
+						done = false;
+
+						// decreasing burst time of current process
+						processes[i][0] -= quantum;
+
+						// updating schedule time for this process
+						st[i] += std::to_string(t) + " ";
+
+						// updating the number of context switches
+						cs++;
+
+						// adding this process to the order of processes 
+						order.push_back(i);
+
+					} else if(processes[i][0] > -1){
+
+						done = false;
+
+						t += processes[i][0];
+
+						st[i].append(std::to_string(t) + " ");
+
+						// turn-around time is completion_time - arrival_time
+						tt[i] = t - processes[i][1];
+
+						// waiting time is turn_around_time - initial_burst_time
+						wt[i] = t - bt[i];
+
+						order.push_back(i);
+
+						// last cycle of process
+						processes[i][0] = -1;
+					} else {
+						//done = false; // there are still processes pending
+
+						// since no processes have arrived at this point
+						// one CPU cycle has passed
+						t++;
+					}
+				}
+			}
+		}
 
 	std::cout<<"Total number of context switches: "<<cs<<std::endl;
 	
 	std::cout<<"Total time: "<<t<<std::endl;
 
 	// printing the order in which processes were scheduled
-
 	std::cout<<"Process order: ";
 
 	for(int i = 0; i < order.size(); i++) 
